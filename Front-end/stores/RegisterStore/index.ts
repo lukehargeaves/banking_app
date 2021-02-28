@@ -7,7 +7,7 @@ interface registerParams {
   confirmPassword: string;
   email: string;
 }
-export default async (variables) => {
+const login = async (variables) => {
   const {
     username,
     password,
@@ -30,3 +30,5 @@ export default async (variables) => {
     return { status: 400 };
   }
 };
+
+export default login;

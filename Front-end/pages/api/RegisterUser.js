@@ -6,7 +6,6 @@ const client = new ApolloClient({
 });
 
 const registerUser = async (req, res) => {
-  console.log("test", res);
   const { username, password, confirmPassword, email } = req.body.data;
   try {
     const { data } = await client.mutation({

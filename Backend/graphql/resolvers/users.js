@@ -18,7 +18,6 @@ module.exports = {
   },
   Mutation: {
     async login(_, { username, password }, context) {
-      authChecker(context);
       const errors = loginValidation(username, password);
       const user = await Users.findOne({ username });
       if (!user) {
@@ -29,6 +28,10 @@ module.exports = {
       if (!!Object.values(errors).length) {
         throw new UserInputError("Validation Errors", {
           errors,
+        });
+      } else if (!correctPassword) {
+        throw new UserInputError("Validation Errors", {
+          password: "incorrect username or password",
         });
       }
       const token = JWT_TokenGenerator(user);
