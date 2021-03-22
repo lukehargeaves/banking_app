@@ -1,0 +1,5 @@
+#ignore tailwind.css
+styles
+node_modules
+.next
+out

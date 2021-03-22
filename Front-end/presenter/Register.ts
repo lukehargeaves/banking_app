@@ -1,6 +1,7 @@
 import { observable, computed, action } from "mobx";
-import login from "../stores/LoginStore/index";
+import register from "../stores/RegisterStore/index";
 import { useRouter } from "next/router";
+import Register from "../pages/Register";
 // interface data = {
 
 // }
@@ -36,18 +37,20 @@ class LoginPM {
       confirmPassword: formData.get("confirmPassword") as string,
     };
 
+    console.log(variables);
+
     form.reset();
     this.loading = true;
     // TODO: Declare the type for data
-    const data: any = await login(variables);
+    const { data }: any = await register(variables);
     this.username = variables.username;
-    console.log(this.props, "this.props");
     if (!!data.register) this.success = true;
     this.loading = false;
   };
 
   onSuccess = () => {
     this.success = true;
+    this.props.router.push("home");
   };
 }
 

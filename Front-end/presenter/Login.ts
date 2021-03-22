@@ -36,14 +36,18 @@ class LoginPM {
     form.reset();
     this.loading = true;
     // TODO: Declare the type for data
-    const data: any = await login(variables);
+    const { data }: any = await login(variables);
     this.username = variables.username;
-    if (!!data.register) this.onSuccess();
+    if (data.login) {
+      this.onSuccess(data.login);
+    }
     this.loading = false;
   };
 
-  onSuccess = () => {
+  onSuccess = (data: any) => {
     this.success = true;
+
+    window.localStorage.setItem("sessionToken", "1234565");
     this.props.router.push("home");
   };
 }

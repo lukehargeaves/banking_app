@@ -1,5 +1,5 @@
 import { presenter } from "../Util/Hoc";
-import Presenter from "../presenter/Login";
+import Presenter from "../presenter/Register";
 
 const Register = ({ pm, cn }) => {
   return (

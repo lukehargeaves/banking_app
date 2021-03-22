@@ -19,8 +19,8 @@
 .DS_Store
 *.pem
 
-#Special Hoc
-/Util
+# #Special Hoc
+# /Util
 
 # debug
 npm-debug.log*
